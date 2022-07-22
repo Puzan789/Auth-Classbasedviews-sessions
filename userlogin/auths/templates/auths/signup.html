@@ -11,14 +11,14 @@
 
     {% csrf_token %}
     {{form.as_p}}
-  <input type="submit" value="submit">
+  <input type="submit" value="signup">
   </form>
 {% if messages %}
   {% for message in messages %}
-
     <small {% if messages.tags %} class="{{messages.tags}}"  {% endif %}>{{message}}</small>
   {% endfor %}
 {% endif %}
+<a href="{% url 'login' %}">login</a>
 
 </body>
 </html>
