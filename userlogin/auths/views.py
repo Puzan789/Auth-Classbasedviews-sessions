@@ -2,8 +2,8 @@
 from django.contrib import messages
 from django.shortcuts import render,HttpResponseRedirect
 from django.urls import is_valid_path
-from .forms import signupform
-from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm
+from .forms import signupform,edituserprofile
+from django.contrib.auth.forms import AuthenticationForm,PasswordChangeForm,SetPasswordForm,UserChangeForm
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
 def signup(request):
     if request.method == "POST":
@@ -38,7 +38,14 @@ def userlogin(request):
         return HttpResponseRedirect('/profile/')
 def userprofile(request):
     if request.user.is_authenticated:
-        return render(request, 'auths/profile.html' ,{'name':request.user})
+        if request.method=="POST":
+            fm=edituserprofile(request.POST,instance=request.user)
+            if fm.is_valid():
+                fm.save()
+                print("saved")
+        else:
+            fm=edituserprofile(instance=request.user)
+        return render(request, 'auths/profile.html' ,{'name':request.user,'form':fm})
     else:
         return HttpResponseRedirect('/login/')
 def userlogout(request):
