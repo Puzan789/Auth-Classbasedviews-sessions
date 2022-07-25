@@ -8,6 +8,18 @@
 </head>
 <body>
     <h1>welcome {{name}}</h1>
+    
+    {% if users != None %}
+        <h3>list of users</h3>
+        {% for user in users  %}
+        <br>
+        {{user.username}}
+        <br>
+        {{user.email}}
+        {% endfor %}
+        
+    {% endif %}
+        
     hello you are redirected here at profile page
     <br>
     <br>
