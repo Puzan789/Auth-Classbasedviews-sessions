@@ -20,6 +20,8 @@ from pro import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.myview),
-    path('cl',views.MYview.as_view(name='rahul')),
-    path('dj',views.vieww.as_view(),name='hi')
+    path('cl/',views.MYview.as_view(name='rahul')),
+    path('dj/',views.vieww.as_view(),name='hi'),
+    path('hii/',views.vin),
+    path('pet/',views.diesel.as_view())
 ]

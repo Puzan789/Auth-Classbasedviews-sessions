@@ -13,3 +13,11 @@ class MYview(View):
 class vieww(View):
     def get(self,request):
         return render(request,'enroll/dj.html')
+
+def vin(request):
+    context={'msg':'hello fucking peoples wassup'}
+    return render(request,'enroll/har.html',context)
+class diesel(View):
+    def get(self,request):
+        context={'msg':'hello fuckerss you  peoples are at class based views '}
+        return render(request,'enroll/har.html',context)
