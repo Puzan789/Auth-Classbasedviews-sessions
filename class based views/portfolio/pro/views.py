@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
+from requests import request
+from .forms import contactform
+
+
 def myview(request):
     return HttpResponse ('<h1>we are the champions </h1>')
 
@@ -21,3 +25,25 @@ class diesel(View):
     def get(self,request):
         context={'msg':'hello fuckerss you  peoples are at class based views '}
         return render(request,'enroll/har.html',context)
+# def formm(request):
+#     if request.method=='POST':
+#         form=contactform(request.POST)
+#         if form.is_valid():
+#             print(form.cleaned_data['name'])
+#         return HttpResponse("hello guys your form has been submitted")
+#     else:
+#         form=contactform()
+#         return render(request,'enroll/get.html',{'form':form})
+class formm(View):
+    def get(self,request):
+        form=contactform()
+        return render(request,'enroll/get.html',{'form':form})
+    def post(self,request):
+        if request.method=='POST':
+            form=contactform(request.POST)
+            if form.is_valid():
+                print(form.cleaned_data['name'])
+        return HttpResponse("hello guys your form has been submitted")
+        
+
+        

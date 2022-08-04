@@ -23,5 +23,6 @@ urlpatterns = [
     path('cl/',views.MYview.as_view(name='rahul')),
     path('dj/',views.vieww.as_view(),name='hi'),
     path('hii/',views.vin),
-    path('pet/',views.diesel.as_view())
+    path('pet/',views.diesel.as_view()),
+    path('he/',views.formm.as_view())
 ]
